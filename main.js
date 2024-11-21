@@ -41,7 +41,7 @@ class LinkedList {
   }
   head() {
     return (
-      "value: " + this.header.value + " NextNode: " + this.header.nextNode.value
+      this.header.value
     );
   }
 
@@ -53,14 +53,50 @@ class LinkedList {
     return nodeLoop;
   }
 
-  at(index){
+  at(index) {
     let nodeLoop = this.header;
     let nodeCounter = 0;
     while (nodeLoop.nextNode !== null && nodeCounter !== index) {
       nodeCounter++;
       nodeLoop = nodeLoop.nextNode;
     }
-    return "value: " + nodeLoop.value + " next node: " + nodeLoop.nextNode.value;
+    return nodeLoop;
+  }
+
+  pop() {
+    let nodeLoop = this.header;
+    let nodeCounter = 0;
+    while (nodeLoop.nextNode !== null) {
+      nodeCounter++;
+      nodeLoop = nodeLoop.nextNode;
+    }
+    this.at(nodeCounter - 1).nextNode = null;
+    return this;
+  }
+  contains(value) {
+    let nodeLoop = this.header;
+    while (nodeLoop.nextNode !== null) {
+      if (nodeLoop.value === value) {
+        return true;
+      }
+      nodeLoop = nodeLoop.nextNode;
+    }
+    return false;
+  }
+  find(value) {
+    let nodeLoop = this.header;
+    let nodeCounter = 0;
+    while (nodeLoop.nextNode !== null) {
+      if (nodeLoop.value === value) {
+        return nodeCounter;
+      }
+      nodeCounter++;
+      nodeLoop = nodeLoop.nextNode;
+    }
+    if (nodeLoop.value === value) {
+        return nodeCounter;
+      }
+    else return null;
   }
 }
 
@@ -74,4 +110,4 @@ list.append("snake");
 list.append("turtle");
 list.prepend("armadillo");
 
-console.log(list.at(3));
+console.log(list.find("fox"));
