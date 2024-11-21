@@ -33,7 +33,7 @@ class LinkedList {
   size() {
     let nodeLoop = this.header;
     let nodeCounter = 0;
-    while (nodeLoop.nextNode !== null) {
+    while (nodeLoop !== null) {
       nodeCounter++;
       nodeLoop = nodeLoop.nextNode;
     }
@@ -115,21 +115,34 @@ class LinkedList {
       this.at(index - 1).nextNode = tmp;
     }
   }
-  removeat(index) {
-
+  removeAt(index) {
+    if (this.size() !== 0 && this.size() >= index){
+        let tmp = this.at(index-1)
+        tmp.nextNode = this.at(index+1);
+    }
   }
 }
 
 const list = new LinkedList();
 
-list.prepend("dog");
+list.prepend("dog"); // works
 list.append("cat");
 list.append("parrot");
 list.append("hamster");
 list.append("snake");
-list.append("turtle");
+list.append("turtle"); // works
 list.prepend("armadillo");
-list.insert("yo", 3);
+list.insert("yo", 3); // works
+list.removeAt(1); // works
 
-console.log(list.size());
-console.log(list.toString());
+
+console.log(list.size()); // works
+console.log(list.toString()); // works
+console.log(list.find("car")) // works
+console.log(list.find("cat")) // works
+console.log(list.tail()) // works
+console.log(list.head()) // works
+console.log(list.pop().toString()) // works
+console.log(list.contains("parrot")) // works
+console.log(list.contains("car")) // works
+console.log(list.at(2).value) // works
