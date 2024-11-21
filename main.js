@@ -40,9 +40,7 @@ class LinkedList {
     return nodeCounter;
   }
   head() {
-    return (
-      this.header.value
-    );
+    return this.header.value;
   }
 
   tail() {
@@ -94,9 +92,21 @@ class LinkedList {
       nodeLoop = nodeLoop.nextNode;
     }
     if (nodeLoop.value === value) {
-        return nodeCounter;
-      }
-    else return null;
+      return nodeCounter;
+    } else return null;
+  }
+  toString() {
+    let nodeLoop = this.header;
+    let nodeArray = [];
+    while (nodeLoop.nextNode !== null) {
+      nodeArray.push(nodeLoop.value);
+      nodeLoop = nodeLoop.nextNode;
+    }
+    nodeArray.push(nodeLoop.value);
+    if (nodeLoop.nextNode === null) {
+      nodeArray.push("null");
+    } else nodeArray.push(nodeLoop.nextNode);
+    return "(" + nodeArray.join(") -> (") + ")";
   }
 }
 
@@ -110,4 +120,4 @@ list.append("snake");
 list.append("turtle");
 list.prepend("armadillo");
 
-console.log(list.find("fox"));
+console.log(list.toString());
