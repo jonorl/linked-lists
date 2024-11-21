@@ -108,6 +108,16 @@ class LinkedList {
     } else nodeArray.push(nodeLoop.nextNode);
     return "(" + nodeArray.join(") -> (") + ")";
   }
+  insert(value, index) {
+    if (this.size() !== 0 && this.size() >= index) {
+      let tmp = new Node(value);
+      tmp.nextNode = this.at(index);
+      this.at(index - 1).nextNode = tmp;
+    }
+  }
+  removeat(index) {
+
+  }
 }
 
 const list = new LinkedList();
@@ -119,5 +129,7 @@ list.append("hamster");
 list.append("snake");
 list.append("turtle");
 list.prepend("armadillo");
+list.insert("yo", 3);
 
+console.log(list.size());
 console.log(list.toString());
