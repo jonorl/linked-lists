@@ -1,6 +1,6 @@
 // import modules
 
-import {LinkedList} from "./class.mjs"
+import { LinkedList } from "./class.mjs";
 
 // testing parameters
 
@@ -19,11 +19,11 @@ list.removeAt(4); // works
 // output
 console.log(list.size()); // works
 console.log(list.toString()); // works
-console.log(list.find("car")) // works
-console.log(list.find("snake")) // works
-console.log(list.tail()) // works
-console.log(list.head()) // works
-console.log(list.pop().toString()) // works
-console.log(list.contains("parrot")) // works
-console.log(list.contains("car")) // works
-console.log(list.at(1)) // works
+console.log(list.find("car")); // works
+console.log(list.find("snake")); // works
+console.log(list.tail()); // works
+console.log(list.head()); // works
+console.log(list.pop().toString()); // works
+console.log(list.contains("parrot")); // works
+console.log(list.contains("car")); // works
+console.log(list.at(1)); // works
