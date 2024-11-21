@@ -20,15 +20,26 @@ class LinkedList {
         nodeChecker.nextNode = new Node(value);
     }
   }
+
+  prepend(value){
+    if (this.head === null) {
+        this.head = new Node(value);
+      } else {
+        let tmp = new Node(value)
+        tmp.nextNode = this.head
+        this.head = tmp
+      }
+  }
 }
 
 const list = new LinkedList();
 
-list.append("dog");
+list.prepend("dog");
 list.append("cat");
 list.append("parrot");
 list.append("hamster");
 list.append("snake");
 list.append("turtle");
+list.prepend("yo")
 
 console.log(list);
