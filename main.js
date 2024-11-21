@@ -13,34 +13,54 @@ class LinkedList {
     if (this.header === null) {
       this.header = new Node(value);
     } else {
-        let nodeChecker = this.header; 
-        while (nodeChecker.nextNode !== null){
-            nodeChecker = nodeChecker.nextNode;
-        }
-        nodeChecker.nextNode = new Node(value);
+      let nodeChecker = this.header;
+      while (nodeChecker.nextNode !== null) {
+        nodeChecker = nodeChecker.nextNode;
+      }
+      nodeChecker.nextNode = new Node(value);
     }
   }
 
-  prepend(value){
+  prepend(value) {
     if (this.header === null) {
-        this.header = new Node(value);
-      } else {
-        let tmp = new Node(value)
-        tmp.nextNode = this.header
-        this.header = tmp
-      }
+      this.header = new Node(value);
+    } else {
+      let tmp = new Node(value);
+      tmp.nextNode = this.header;
+      this.header = tmp;
+    }
   }
-  size(){
-    let nodeLoop = this.header
+  size() {
+    let nodeLoop = this.header;
     let nodeCounter = 0;
-    while (nodeLoop.nextNode !== null){
-        nodeCounter++;
-        nodeLoop = nodeLoop.nextNode;
+    while (nodeLoop.nextNode !== null) {
+      nodeCounter++;
+      nodeLoop = nodeLoop.nextNode;
     }
     return nodeCounter;
   }
-  head(){
-    return "value: " + this.header.value + " NextNode: " + this.header.nextNode.value
+  head() {
+    return (
+      "value: " + this.header.value + " NextNode: " + this.header.nextNode.value
+    );
+  }
+
+  tail() {
+    let nodeLoop = this.header;
+    while (nodeLoop.nextNode !== null) {
+      nodeLoop = nodeLoop.nextNode;
+    }
+    return nodeLoop;
+  }
+
+  at(index){
+    let nodeLoop = this.header;
+    let nodeCounter = 0;
+    while (nodeLoop.nextNode !== null && nodeCounter !== index) {
+      nodeCounter++;
+      nodeLoop = nodeLoop.nextNode;
+    }
+    return "value: " + nodeLoop.value + " next node: " + nodeLoop.nextNode.value;
   }
 }
 
@@ -52,6 +72,6 @@ list.append("parrot");
 list.append("hamster");
 list.append("snake");
 list.append("turtle");
-list.prepend("armadillo")
+list.prepend("armadillo");
 
-console.log(list.head());
+console.log(list.at(3));
