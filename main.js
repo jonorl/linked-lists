@@ -7,13 +7,13 @@ class Node {
 
 class LinkedList {
   constructor() {
-    this.head = null;
+    this.header = null;
   }
   append(value) {
-    if (this.head === null) {
-      this.head = new Node(value);
+    if (this.header === null) {
+      this.header = new Node(value);
     } else {
-        let nodeChecker = this.head; 
+        let nodeChecker = this.header; 
         while (nodeChecker.nextNode !== null){
             nodeChecker = nodeChecker.nextNode;
         }
@@ -22,13 +22,25 @@ class LinkedList {
   }
 
   prepend(value){
-    if (this.head === null) {
-        this.head = new Node(value);
+    if (this.header === null) {
+        this.header = new Node(value);
       } else {
         let tmp = new Node(value)
-        tmp.nextNode = this.head
-        this.head = tmp
+        tmp.nextNode = this.header
+        this.header = tmp
       }
+  }
+  size(){
+    let nodeLoop = this.header
+    let nodeCounter = 0;
+    while (nodeLoop.nextNode !== null){
+        nodeCounter++;
+        nodeLoop = nodeLoop.nextNode;
+    }
+    return nodeCounter;
+  }
+  head(){
+    return "value: " + this.header.value + " NextNode: " + this.header.nextNode.value
   }
 }
 
@@ -40,6 +52,6 @@ list.append("parrot");
 list.append("hamster");
 list.append("snake");
 list.append("turtle");
-list.prepend("yo")
+list.prepend("armadillo")
 
-console.log(list);
+console.log(list.head());
